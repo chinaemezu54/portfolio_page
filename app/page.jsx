@@ -1,187 +1,134 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiCopy, BiMenu, BiMessage, BiMoon, BiSun } from "react-icons/bi";
 import { BsGithub, BsLinkedin, BsTwitterX } from "react-icons/bs";
-import { FaMessage } from "react-icons/fa6";
+import { FaFacebook, FaMessage } from "react-icons/fa6";
+import { FcDocument } from "react-icons/fc";
+import { GrDocument } from "react-icons/gr";
 import { RiMessage2Line } from "react-icons/ri";
 
 export default function Home() {
-  const [pL, setPL] = useState("JavaScript")
-  const [darkTheme, setDarkTheme] = useState(true)
+  const [section, setSection] = useState("Overview")
   const [message, setMessage] = useState(false)
 
-  const bg_primary = ""
-  // const icon = {`text-white text-lg p-1 hover:bg-white hover:text-black rounded-md`}
-
-  const programming_languages = ["JavaScript", "C++", "Python", "Java"]
+  const sections = ["Overview", "Projects"]
   const projects = [
     {
-      projectName: "Learna App - An app for learning jaleoaihfeoian ea oe ao",
-      language: "JavaScript"
+      title: "Ecommerce Website",
+      image: ""
     },
     {
-      projectName: "Ecommerce App",
-      language: "JavaScript"
+      title: "Ecommerce Website",
+      image: ""
     },
     {
-      projectName: "Ecommerce App",
-      language: "C++"
-    },
-    {
-      projectName: "Ecommerce App",
-      language: "Python"
-    },
-    {
-      projectName: "Ecommerce App",
-      language: "Python"
-    },
-    {
-      projectName: "Ecommerce App",
-      language: "Python"
-    },
-    {
-      projectName: "Ecommerce App",
-      language: "Python"
-    },
-    {
-      projectName: "Ecommerce App",
-      language: "Python"
-    },
+      title: "Ecommerce Website",
+      image: ""
+    }
+    
     
   ]
-  // const socials 
 
+  // const textHighlight = "text-amber-500 font-bold"
 
+  useEffect(() => {
+    console.log(section)
+  }, [section])
 
   return (
-    <div className={`flex flex-col flex-1 min-h-screen max-h-screen  cursor-default   ${darkTheme ? "bg-[#17253f] text-white" : "bg-white text-black"}`}>
-      <nav className={`w-full flex justify-end gap-2 p-2`}>
-        {darkTheme ? (
-          <button className={`text-lg p-1 rounded-md text-white hover:bg-white hover:text-black`} onClick={() => setDarkTheme(false)}><BiMoon /></button>
-
-        ): (
-          <button className={`text-lg p-1 rounded-md hover:bg-black hover:text-white`} onClick={() => setDarkTheme(true)}><BiSun /></button>
-        )}
-        <button className={`text-lg p-1 hover:bg-white hover:text-black rounded-md`}><BiMenu /></button>
+    <>
+      <nav className="flex justify-end items-center gap-5 p-2">
+        <div>
+          <button className="text-[0.8rem] px-3 py-1 rounded-md bg-gray-100 outline outline-gray-400 hover:bg-gray-200">Contact Me</button>
+        </div>
+        <div className="flex gap-1">
+          <button className="text-lg hover:bg-gray-200 p-1 rounded-md"><BiMoon /></button>
+          <button className="text-lg hover:bg-gray-200 p-1 rounded-md"><BiMenu /></button>
+          
+        </div>
       </nav>
 
-      {/* PARENT CONTAINER */}
-      <div className=" flex-1 flex overflow-hidden gap-2 bg-gray-900">
-
-        {/* PROFILE CONTAINER */}
-        <div className="flex-1 flex flex-col gap-2">
-          
-          <div className="bg-gray-900 h-full p-4 flex-1 flex flex-col border-r border-gray-700">
-            <div className="flex flex-col gap-3 border-gray-500">
-              <div className="pb-2">
-                <h1 className="text-[1.2rem] whitespace-nowrap font-bold">Ezeobi Chinaemezu Prosper</h1>
-                <p className="text-[1rem] text-gray-200 pb-1">Software Developer</p>
-                <p className="text-[0.7rem] text-gray-200 pb-1">Port Harcourt, Nigeria</p>
-                
-
-              </div>
-
-              <div className="flex gap-2">
-                {programming_languages.map((pl, i) => (
-                  <span key={i} className="text-[0.6rem] bg-gray-800 px-3 py-0.5 rounded-sm flex items-center justify-center">{pl}</span>
-                ))}
-              </div>
-
-              <div className="flex justify-between">
-                <p className="text-[0.7rem] text-gray-200">prosperezeobi77@gmail.com</p>
-                {/* <button><BiCopy /></button> */}
-              </div>
-
-              
-
-              <div>
-                <div className="text-[0.8rem] py-10">I am a developer who likes working with clear goals and delivering stunning products. <span onClick={() => setMessage(true)} className="px-2 py-1 hover:bg-gray-950 rounded-sm">Work with me today!</span></div>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <div className="flex gap-3 py-2 text-sm">
-                  <button className="text-gray-300 hover:text-white"><BsTwitterX /></button>
-                  <button className="text-gray-300 hover:text-white"><BsLinkedin /></button>
-                  <button className="text-gray-300 hover:text-white"><BsGithub /></button>
-                </div>
-                
-              </div>
-
-              <div>
-                
-              </div>
-              
-
-              
-
+      <div className="flex-1  flex p-1 gap-1">
+        <div className="border border-gray-300 min-w-[20%] rounded-md overflow-hidden">
+          {/* <h2 className="py-4 px-4 border-b border-gray-200 text-2xl">Portfolio</h2> */}
+          <div className="p-4 border-b border-gray-200 flex items-center gap-2">
+            <div className="w-[4rem] h-[4rem] rounded-full overflow-hidden relative">
+              <img src="/images/image.jpg" alt="profile-img" className="object-cover w-full h-full" />
             </div>
+            <div className="">
+              <h1 className="whitespace-nowrap">Ezeobi Prosper Chinaemezu </h1>
+              <p className="text-sm text-gray-500">Software Developer</p>
 
-            
+              <div className="absolute flex">
+                <div className="pr-3">
+                  <button className="text-sm rounded-sm p-1 hover:bg-gray-200"><RiMessage2Line /></button>
+
+                </div>
+                {/* <div className="text-gray-400 text-[0.8rem]">
+                  <button className="rounded-sm p-1 hover:bg-gray-200"><BsTwitterX /></button>
+                  <button className="rounded-sm p-1 hover:bg-gray-200"><FaFacebook /></button>
+                  <button className="rounded-sm p-1 hover:bg-gray-200"><BsLinkedin /></button>
+                </div> */}
+                
+              </div>
+            </div>
+          </div>
+
+          <div className="px-2 py-4 flex flex-col gap-2">
+            {sections.map((s, i) => (
+              <div key={i} className={`flex justify-center py-3 gap-2 border rounded-md text-sm cursor-default  ${s == section ? "bg-gray-100 border-gray-400" : "hover:bg-gray-100 border-white"}`} onClick={() => setSection(s)}>
+                {s}
+              </div>
+            ))}
           </div>
         </div>
 
+        <div className="flex-1 border rounded-md border-gray-300">
+          {section == "Overview" ? (
+            <div className="h-full flex flex-col p-1 relative">
+              
 
-        {/* PORTFOLIO CONTAINER */}
-        <div className="w-[75%] flex overflow-hidden">
+              {/* Message Form */}
+              <div className={`absolute top-[20%] right-[20%] border border-gray-300 rounded-md bg-white shadow-md ${message ? "block" : "hidden"}`}>
+                <p className="py-4 flex justify-center text-xl border-b border-gray-300">Contact Me</p>
 
-          <div className="overflow-y-hidden border-r border-gray-700 relative">
-            <h2 className="px-4 py-5  rounded-2xl">Portfolio</h2>
+                <form action="" className="flex flex-col gap-2 p-2">
+                  <div className="flex gap-2">
+                    <input type="text" className="border border-gray-400 px-3 py-2 rounded-md w-[18rem] text-sm focus:outline-none" placeholder="Name" />
+                    <input type="text" className="border border-gray-400 px-3 py-2 rounded-md w-[18rem] text-sm focus:outline-none" placeholder="Email" />
 
-            <div className="bg-gray-900 p-2 rounded-xl overflow-y-auto h-full">
+                  </div>
+                  <textarea name="" id="" className="border border-gray-400 w-full h-[15rem] resize-none rounded-md p-2 text-sm focus:outline-none"></textarea>
+                  <button className="w-full py-2 border border-gray-400 rounded-md hover:bg-gray-700 hover:text-white font-bold" type="submit">Send</button>
+                </form>
 
-                <div className={`flex-1 max-h-full grid gap-2 p-2 overflow-y-auto ${message ? "grid-cols-3" : " grid-cols-4"}`}>
-                  {projects.map((p, i) => (
-                    <div key={i} className="hover:bg-gray-800 rounded-2xl p-2">
-                      <div className="bg-gray-700 h-[10rem] rounded-xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 text-[0.6rem] flex justify-center py-1 text-gray-100 bg-gray-600 rounded-bl-xl w-[5rem]">{p.language}</div>
-                      </div>
-                      <p className="text-[0.7rem] truncate">{p.projectName}</p>
+                <button className="absolute left-5 top-5 text-sm" onClick={() => setMessage(false)}>cancel</button>
+              </div>
+
+              
+              
+            </div>
+          ) : section == "Projects" && (
+            <div className="grid grid-cols-4 p-1 gap-x-1 gap-y-3">
+              {projects.map((p, i) => (
+                <a href="" target="blank" noreferer noopener className="" key={i}>
+                  <div className="overflow-hidden">
+                    <div className="border border-gray-300 h-[10rem] rounded-md relative overflow-hidden">
+                      <div className="absolute top-0 right-0 bg-gray-200 rounded-bl-md min-w-[5rem] flex justify-center py-1">
+                      <p className=" text-[0.7rem]">JavaScript</p>
                     </div>
-                  ))}
-                </div>
+                    </div>
+                    <p className="text-[0.8rem]">{p.title}</p>
 
+                    
+
+                  </div>
+                </a>
+              ))}
             </div>
-
-            {!message && (
-              <div className="absolute top-3 right-0 p-2 border border-gray-600 border-r-0 rounded-l-lg" onClick={() => setMessage(!message)}>
-                <RiMessage2Line />
-              </div>
-
-            )}
-
-
-          </div>
-
-          
-          <div className={` transition-all duration-300 overflow-hidden ${message ? " min-w-[35%] max-w-[35%] " : "max-w-0 min-w-0"}`}>
-            <div className={`h-full p-4 relative`}>
-              <form className=" rounded-xl flex-1 flex flex-col pt-6 pb-2 gap-3 h-full">
-                <div className="flex text-gray-300">Contact me</div>
-                <div className="w-full flex-1 flex flex-col gap-3">
-                  <input type="text" placeholder="Name" className="outline-0 w-full border border-gray-600 rounded-sm px-3 py-2 text-[0.8rem] " />
-                  <input type="text" placeholder="Email" className="outline-0 w-full border border-gray-600 rounded-sm px-3 py-2 text-[0.8rem] " />
-                  <textarea name="" id="" className="outline-0 border border-gray-600 w-full text-sm resize-none px-3 py-2 text-[0.8rem] flex-1 rounded-sm "></textarea>
-                </div>
-
-                <button className="border border-gray-600 rounded-sm text-sm py-2 hover:bg-white hover:text-black">Send</button>
-
-              </form>
-
-              <div className="absolute top-5 text-gray-400 right-3 w-5 h-5" onClick={() => setMessage(false)}>
-                <div className="border w-5 rotate-45 absolute top-2"/>
-                <div className="border w-5 rotate-135 absolute top-2"/>
-              </div>
-            </div>
-
-          </div>
-
-          {/* MESSAGE CONTAINER */}
-          
-          
+          )}
         </div>
-
-
       </div>
-    </div>
+    </>
   );
 }
