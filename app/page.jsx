@@ -13,6 +13,7 @@ export default function Home() {
   const [message, setMessage] = useState(false)
   const [menu, setMenu] = useState(false)
   const [lightTheme, setLightTheme] = useState(true)
+  const [copied, setCopied] = useState(false)
 
   const sections = ["Overview", "Projects"]
   const projects = [
@@ -36,6 +37,22 @@ export default function Home() {
   const latestProject = projects[latest]
 
   const darkTheme = "bg-gray-900 border-gray-700 text-white"
+
+  function copyText() {
+    const text = document.getElementById("text-to-copy").innerText
+    navigator.clipboard.writeText(text)
+      // .then(() => {
+      //   alert("Text copied to clipboard")
+      // })
+      // .catch(err => {
+      //   console.error("Failed to copy text: ", err)
+      // })
+      setCopied(true)
+
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+  }
 
   return (
     <>
@@ -93,7 +110,9 @@ export default function Home() {
                     <div className={`text-[0.8rem] flex justify-center items-center flex-1 border border-gray-200 rounded-md ${!lightTheme ? "border-gray-700" : "border-gray-200"}`}>
                       <div className="flex flex-col gap-5">
                         <div className="flex flex-col gap-4">
-                          <p className="cursor-pointer"><span className={`px-2 py-1  rounded-sm cursor-default ${!lightTheme ? "bg-gray-800" : "bg-gray-200"}`}>email</span> prosperezeobi77@gmail.com</p>
+                          <div className="cursor-pointer flex gap-2 items-center relative"><p className={`px-2 py-1  rounded-sm cursor-default w-fit ${!lightTheme ? "bg-gray-800" : "bg-gray-200"}`}>email</p> <p className="" id="text-to-copy" onClick={copyText}>prosperezeobi77@gmail.com</p>
+                          <p className={`absolute left-full px-2 py-0.5 mx-2 rounded-sm text-xs bg-gray-300 ${copied ? "block" : "hidden"}`}>copied</p>
+                          </div>
                           
                           <p className="flex gap-2 items-center"><span className={`px-2 py-1 bg-gray-200 rounded-sm ${!lightTheme ? "bg-gray-800" : "bg-gray-200"}`}>languages</span>JavaScript Python C++</p>
                           <div className="flex gap-2 items-center"><p className={`px-2 py-1 bg-gray-200 rounded-sm w-fit ${!lightTheme ? "bg-gray-800" : "bg-gray-200"}`}>links</p>
